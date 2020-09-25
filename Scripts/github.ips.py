@@ -45,6 +45,7 @@ if __name__ == '__main__':
     importer = response['importer']
 
     combination = list(set(hooks + web + api + git + pages + importer))
+    combination = sorted(combination, key=lambda x: [int(m) for m in re.findall("\\d+", x)])
     cidr = []
     ips = []
 
@@ -63,9 +64,9 @@ if __name__ == '__main__':
             if is_overlap(j, i) is False:
                 tmp.append(j)
         ips = tmp
-        index += 1
         if index == len(cidr) - 1:
             result = ips
+        index += 1
 
     result = list(set(result + cidr))
     result = sorted(result, key=lambda x: [int(m)
