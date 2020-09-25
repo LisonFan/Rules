@@ -1,7 +1,7 @@
 #!/bin/bash
 
-current_directory="$PWD"
-parent_directory=$(dirname "$PWD")
+current_directory=$(cd "$(dirname "$0")";pwd) || return
+parent_directory=$(dirname "$current_directory")
 
 export http_proxy=http://127.0.0.1:8118
 export https_proxy=http://127.0.0.1:8118
@@ -17,9 +17,6 @@ github() {
 }
 
 github
-
-
-
 
 unset http_proxy
 unset https_proxy
