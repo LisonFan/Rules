@@ -8,6 +8,7 @@ export https_proxy=http://127.0.0.1:8118
 export all_proxy=socks5://127.0.0.1:1080
 
 github() {
+    cd "$current_directory" || return
     github_script_path="$current_directory/github.ips.py"
     python3 "$github_script_path"
     cd "$parent_directory" || return
