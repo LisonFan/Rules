@@ -9,7 +9,7 @@ export all_proxy=socks5://127.0.0.1:1080
 
 github() {
     github_script_path="$current_directory/github.ips.py"
-    python "$github_script_path"
+    python3 "$github_script_path"
     cd "$parent_directory" || return
     git add .
     git commit -m "Github IPs Update"
