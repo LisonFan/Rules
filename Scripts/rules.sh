@@ -17,6 +17,16 @@ github() {
     git push
 }
 
+china() {
+    cd "$current_directory" || return
+    china_script_path="$current_directory/china_ips.py"
+    python3 "$china_script_path"
+    cd "$parent_directory" || return
+    git add .
+    git commit -m "China IPs Update"
+    git push
+}
+
 github
 
 unset http_proxy
